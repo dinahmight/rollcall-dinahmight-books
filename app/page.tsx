@@ -1,207 +1,161 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Heart, Users } from "lucide-react";
 
-import { useEffect, useRef } from "react";
-
-const NAVY = "#0B1B33";
-const NAVY_LIGHT = "#3E4A5E";
-const GOLD = "#D4AF37";
-const CREAM = "#F5EFE0";
-
-const LOGO_URL =
-  "https://g.tlcdn.com/gen/175d6314e8624a27b1c5eec041b069de.png";
-const TRAILER_URL =
-  "https://g.tlcdn.com/gen/d11a70aff8a74b2bbf30dd0ecaff0b3a.mp4";
-const ILLUSTRATION_URL =
-  "https://g.tlcdn.com/gen/477d2c9117f34594bfa42b50aa77701c.png";
-const CHAPTER_PDF_URL =
-  "https://g.tlcdn.com/gen/3d7f2c774e684bb0b69d8f3ba9957b35.pdf";
-
-export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    videoRef.current?.play().catch(() => {});
-  }, []);
-
+export default function HomePage() {
   return (
-    <main
-      className="min-h-screen w-full"
-      style={{ backgroundColor: NAVY_LIGHT, color: CREAM }}
-    >
-      {/* HERO */}
-      <section
-        className="relative flex flex-col items-center px-6 pt-14 pb-20 text-center overflow-hidden"
-        style={{ backgroundColor: NAVY }}
-      >
-        <img
-          src={LOGO_URL}
-          alt="DinahMight Books"
-          className="w-24 h-24 md:w-28 md:h-28 rounded-full shadow-lg mb-6 object-cover"
-        />
-        <p
-          className="uppercase tracking-[0.3em] text-xs md:text-sm mb-3"
-          style={{ color: GOLD }}
-        >
-          DinahMight Books presents
-        </p>
-        <h1
-          className="font-[family-name:var(--font-playfair)] font-extrabold text-5xl md:text-7xl mb-4 leading-tight"
-          style={{ color: GOLD }}
-        >
-          ROLL CALL!
-        </h1>
-        <h2
-          className="font-[family-name:var(--font-playfair)] text-xl md:text-3xl mb-2"
-          style={{ color: CREAM }}
-        >
-          A 31-Day Gratitude Journey Through the Names of God
-        </h2>
-        <p className="text-base md:text-lg opacity-80 max-w-xl mt-4">
-          Day 1 — <span style={{ color: GOLD }}>Jehovah Jireh</span>: The Lord
-          Who Provides
-        </p>
-      </section>
-
-      {/* CLIFFHANGER VIDEO */}
-      <section className="flex flex-col items-center px-6 py-16">
-        <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-4xl font-bold text-center mb-3">
-          She had <span style={{ color: GOLD }}>one meal</span> left.
-        </h3>
-        <p className="text-center text-lg md:text-xl mb-8 opacity-90 max-w-2xl">
-          The prophet Elijah asked her for it{" "}
-          <span style={{ color: GOLD, fontWeight: 700 }}>first</span>. Watch
-          what happens.
-        </p>
-        <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border-4" style={{ borderColor: GOLD }}>
-          <video
-            ref={videoRef}
-            src={TRAILER_URL}
-            controls
-            playsInline
-            muted
-            loop
-            className="w-full h-auto block"
+    <main className="grain">
+      {/* Hero — full-quality image, lighter overlay for readability without washing it out */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://g.tlcdn.com/gen/7e41df2adeed49fe8df47d9b7cf3169a.png"
+            alt="Golden scroll of light bearing the names of God"
+            fill
+            priority
+            className="object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#0b1220]/70 via-[#0b1220]/35 to-transparent" />
         </div>
-      </section>
-
-      {/* STORY TEASE */}
-      <section
-        className="px-6 py-16"
-        style={{ backgroundColor: NAVY }}
-      >
-        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <img
-            src={ILLUSTRATION_URL}
-            alt="The Widow of Zarephath"
-            className="rounded-xl shadow-2xl w-full object-cover"
-          />
-          <div>
-            <h3
-              className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-4"
-              style={{ color: GOLD }}
+        <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-end justify-center px-6 py-24 text-right">
+          <p className="animate-fade-up font-body text-sm uppercase tracking-[0.3em] text-[#d4af5a]">
+            Discover Who God Is, One Name at a Time
+          </p>
+          <h1
+            className="animate-fade-up mt-6 max-w-2xl font-display text-6xl font-medium leading-[1.05] text-[#f4ecd8] md:text-7xl"
+            style={{ animationDelay: "0.1s" }}
+          >
+            ROLL CALL<span className="text-[#d4af5a]">!</span>
+          </h1>
+          <p
+            className="animate-fade-up mt-4 max-w-xl font-display text-2xl italic text-[#f4ecd8]/90"
+            style={{ animationDelay: "0.2s" }}
+          >
+            A 31-Day Gratitude Journey Through the Names of God
+          </p>
+          <p
+            className="animate-fade-up mt-6 max-w-lg font-body text-base leading-relaxed text-[#f4ecd8]/75"
+            style={{ animationDelay: "0.3s" }}
+          >
+            There is a difference between knowing facts about God and truly
+            knowing Him. This 31-day journey is built to close that distance —
+            one name, one story, one gratitude prayer at a time.
+          </p>
+          <div
+            className="animate-fade-up mt-10 flex flex-wrap justify-end gap-4"
+            style={{ animationDelay: "0.4s" }}
+          >
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-[#d4af5a] px-8 py-4 font-body text-sm uppercase tracking-[0.15em] text-[#0b1220] transition-transform hover:scale-[1.03]"
             >
-              Provision Requires Participation
-            </h3>
-            <p className="text-base md:text-lg opacity-90 mb-4 leading-relaxed">
-              &ldquo;As the Lord your God lives, I do not have bread, only a
-              handful of flour in a bin, and a little oil in a jar... that we
-              may eat it, and die.&rdquo;
-            </p>
-            <p className="text-sm opacity-60 mb-4">— 1 Kings 17:12, NKJV</p>
-            <p className="text-base md:text-lg opacity-90 leading-relaxed">
-              What Elijah asked her to do next required{" "}
-              <span style={{ color: GOLD, fontWeight: 700 }}>
-                impossible faith
-              </span>
-              . Get the full Day 1 chapter — free — and find out what
-              happened when she obeyed anyway.
-            </p>
+              Join the Launch List <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/book"
+              className="inline-flex items-center gap-2 border border-[#f4ecd8]/40 px-8 py-4 font-body text-sm uppercase tracking-[0.15em] text-[#f4ecd8] transition-colors hover:border-[#d4af5a] hover:text-[#d4af5a]"
+            >
+              Explore the Book
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* EMAIL SIGNUP */}
-      <section
-        id="signup"
-        className="px-6 py-20 flex flex-col items-center text-center"
-      >
-        <h3
-          className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold mb-4"
-          style={{ color: GOLD }}
-        >
-          Get the Free Day 1 Chapter
-        </h3>
-        <p className="max-w-xl text-base md:text-lg opacity-90 mb-8">
-          Join the ROLL CALL launch list and we&rsquo;ll send the complete
-          Day&nbsp;1 chapter — Jehovah Jireh: The Lord Who Provides — straight
-          to your inbox, free.
-        </p>
-
-        <div
-          className="w-full max-w-md rounded-2xl p-6 shadow-2xl"
-          style={{ backgroundColor: CREAM }}
-        >
-          {/* Kit (ConvertKit) embedded form injects here via the script in layout.tsx */}
-          <form
-            action="https://app.kit.com/forms/9928021/subscriptions"
-            className="seva-form formkit-form"
-            method="post"
-            data-sv-form="9928021"
-            data-uid="42e94f10e1"
-            data-format="inline"
-            data-version="5"
-          >
-            <div className="flex flex-col gap-3">
-              <input
-                className="formkit-input w-full rounded-lg px-4 py-3 text-base"
-                style={{ color: NAVY, border: `1px solid ${NAVY_LIGHT}` }}
-                name="email_address"
-                aria-label="Email Address"
-                placeholder="Your email address"
-                required
-                type="email"
-              />
-              <button
-                data-element="submit"
-                className="w-full rounded-lg py-3 font-bold text-base tracking-wide transition-opacity hover:opacity-90"
-                style={{ backgroundColor: NAVY, color: GOLD }}
-              >
-                Send Me the Free Chapter
-              </button>
+      {/* Snapshot stats */}
+      <section className="border-y border-[#b8862f]/25 bg-[#f1e8d2] px-6 py-16">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 text-center sm:grid-cols-3">
+          {[
+            { n: "31", label: "Days" },
+            { n: "31", label: "Names of God" },
+            { n: "6", label: "Ways to Engage" },
+          ].map((s) => (
+            <div key={s.label}>
+              <p className="font-display text-6xl text-gold">{s.n}</p>
+              <p className="mt-2 font-body text-sm uppercase tracking-[0.2em] text-[#17203a]/60">
+                {s.label}
+              </p>
             </div>
-          </form>
-          <p className="text-xs mt-4" style={{ color: NAVY_LIGHT }}>
-            No spam. Just Day 1, and updates on the ROLL CALL launch.
-          </p>
+          ))}
         </div>
-
-        <a
-          href={CHAPTER_PDF_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 text-sm md:text-base underline decoration-dotted underline-offset-4 hover:opacity-80 transition-opacity"
-          style={{ color: GOLD }}
-        >
-          Prefer to preview it first? View the Day 1 chapter (PDF) →
-        </a>
       </section>
 
-      {/* FOOTER */}
-      <footer
-        className="px-6 py-10 flex flex-col items-center gap-3"
-        style={{ backgroundColor: NAVY }}
-      >
-        <img
-          src={LOGO_URL}
-          alt="DinahMight Books"
-          className="w-12 h-12 rounded-full object-cover"
-        />
-        <p className="text-xs opacity-60">
-          © {new Date().getFullYear()} DinahMight Books. Stories Worth
-          Telling.
+      {/* Who it's for */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <p className="font-body text-sm uppercase tracking-[0.3em] text-[#b8862f]">
+          Who This Book Is For
         </p>
-      </footer>
+        <h2 className="mt-4 max-w-2xl font-display text-4xl text-[#17203a] md:text-5xl">
+          Whether you&apos;ve known Him for decades, or you&apos;re just
+          starting to listen.
+        </h2>
+        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3">
+          {[
+            {
+              icon: BookOpen,
+              title: "New Believers",
+              body: "A gentle, honest starting point for anyone asking, “how do I actually get to know God?”",
+            },
+            {
+              icon: Heart,
+              title: "Readers in Hard Seasons",
+              body: "For hurt, discouragement, grief, and spiritual dryness — met with truth, not platitudes.",
+            },
+            {
+              icon: Users,
+              title: "Groups & Churches",
+              body: "Built for Bible studies, men’s and women’s groups, small groups, and discipleship classes.",
+            },
+          ].map((c) => (
+            <div
+              key={c.title}
+              className="border border-[#b8862f]/25 bg-white/60 p-8 transition-colors hover:border-[#b8862f]/60"
+            >
+              <c.icon className="h-8 w-8 text-gold" />
+              <h3 className="mt-5 font-display text-2xl text-[#17203a]">
+                {c.title}
+              </h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-[#17203a]/65">
+                {c.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Mission strip — full-quality image, lighter overlay */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://g.tlcdn.com/gen/cc2cdda7c14c4183962f610c71587d34.png"
+            alt="Hands reaching together in warm light, symbolizing restoration and community"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220]/60 via-[#0b1220]/25 to-transparent" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-6 py-28">
+          <div className="max-w-lg">
+            <p className="font-body text-sm uppercase tracking-[0.3em] text-[#d4af5a]">
+              A Message With a Mission
+            </p>
+            <h2 className="mt-4 font-display text-4xl text-[#f4ecd8]">
+              Every book purchased fuels real restoration.
+            </h2>
+            <p className="mt-5 font-body text-sm leading-relaxed text-[#f4ecd8]/80">
+              All proceeds support I Know A Guy Ministries, Inc. &mdash; a
+              faith-based nonprofit walking people from &ldquo;who I
+              was&rdquo; into who God says they are, through faith,
+              community, and service.
+            </p>
+            <Link
+              href="/ministry"
+              className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-[0.15em] text-[#d4af5a] hover:underline"
+            >
+              Learn About the Ministry <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
