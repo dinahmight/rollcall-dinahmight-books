@@ -21,3 +21,8 @@ export const retailerLinks: { name: string; url: string | null }[] = [
 ];
 
 export const ministryUrl = "https://www.iknowaguyministries.org";
+
+export const hardcoverBuyUrl =
+  "https://shop.ingramspark.com/b/084?params=8usP6AqpWw6Fgz6ksVj73gwsphITUjumTllI88AjuAe";
+export const paperbackBuyUrl =
+  "https://shop.ingramspark.com/b/084?params=ETqdj4S66sTpt4Nf6JcabjUewGrvZlhkk1NCcsHTedC";
